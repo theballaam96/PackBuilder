@@ -1,5 +1,6 @@
 const unsafe_song_tag = "stream-unsafe";
 const grandfathered_song_tag = "grandfathered";
+const meme_song_tag = "Meme Song";
 const mood_tags = ["Happy", "Gloomy", "Calm"];
 const site_is_down = false;
 const total_prog = 6;
@@ -91,6 +92,11 @@ function getTagDetails(tag_name) {
         title = "This song was uploaded after your pack was last updated.";
         tag_name = "New!";
         tag_order = -1;
+    } else if (tag_name == meme_song_tag) {
+        color = "warning meme-pill";
+        title = "The song that this cover is mimicking is classed as a meme song, where it is intentionally bad, but the conversion is of good quality. We would highly recommend listening to this song before including it in your pack to see whether you're happy with the audio."
+        tag_name = "Meme Song";
+        tag_order = 2;
     } else if (mood_tags.includes(tag_name)) {
         tag_order = 1;
     }
@@ -147,7 +153,7 @@ function addGame(game_name, image_url, songs, shown) {
                                 <div class="position-absolute top-50 start-0 translate-middle-y">
                                     <div class="d-flex">
                                         <div class="form-check" title="Add/Remove Song">
-                                            <input type="checkbox" game="${tab_name}" song-id="${s.index}" class="song-select form-check-input" />
+                                            <input type="checkbox" game="${tab_name}" song-id="${s.index}" class="song-select ${s.tags.includes(meme_song_tag) ? "meme-song" : ""} form-check-input" />
                                         </div>
                                         <div class="flex-grow-1 fw-bold ps-1 song_name_container">
                                             ${s.name}
@@ -231,9 +237,9 @@ window.updateGameCount = updateGameCount;
 function selectAllForGame(name = null, state = true) {
     let song_checkboxes = [];
     if (name !== null) {
-        song_checkboxes = document.querySelectorAll(`.song-select[game='${name}']`);
+        song_checkboxes = document.querySelectorAll(`.song-select[game='${name}']:not(.meme-song)`);
     } else {
-        song_checkboxes = document.querySelectorAll(`.song-select`);
+        song_checkboxes = document.querySelectorAll(`.song-select:not(.meme-song)`);
     }
     for (let k = 0; k < song_checkboxes.length; k++) {
         song_checkboxes[k].checked = state;
