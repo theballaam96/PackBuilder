@@ -94,7 +94,7 @@ function getTagDetails(tag_name) {
         tag_order = -1;
     } else if (tag_name == meme_song_tag) {
         color = "warning meme-pill";
-        title = "The song that this cover is mimicking is classed as a meme song, where it is intentionally bad, but the conversion is of good quality. We would highly recommend listening to this song before including it in your pack to see whether you're happy with the audio."
+        title = "The song that this cover is mimicking is classed as a meme song, where it is intentionally bad, but the conversion is of good quality. We would highly recommend listening to this song before including it in your pack to see whether you are happy with the audio."
         tag_name = "Meme Song";
         tag_order = 2;
     } else if (mood_tags.includes(tag_name)) {
