@@ -672,6 +672,7 @@
                                 <li><a class="dropdown-item excluded_link" href="#" onclick="buildCandyPack()" id="build-pack-button"><i class="fa-solid fa-download"></i> Download Pack</a></li>
                                 <!-- <li><a class="dropdown-item excluded_link" href="#" onclick="buildBinaryPack()"><i class="fa-solid fa-download"></i> Download Binary Pack</a></li> -->
                                 <li><a class="dropdown-item d-flex"><input type="checkbox" id="unsafe-song-toggle" class="form-check" /><label for="unsafe-song-toggle" class="ps-2">Include Unsafe Tracks</label></a></li>
+                                <li><a class="dropdown-item d-flex"><input type="checkbox" id="meme-song-toggle" class="form-check" /><label for="meme-song-toggle" class="ps-2">Include Meme Tracks</label></a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item excluded_link" href="#" onclick="uploadPack()"><i class="fa-solid fa-upload"></i> Upload Pack</a></li>
                             </ul>
@@ -1667,7 +1668,7 @@
             let build_limit = 0;
 
             function updateMaster() {
-                const all_checkboxes = document.querySelectorAll(".song-select:not(.meme-song)");
+                const all_checkboxes = document.querySelectorAll(".song-select");
                 let all_checked = true;
                 let all_unchecked = true;
                 for (c = 0; c < all_checkboxes.length; c++) {
@@ -1715,7 +1716,7 @@
             }
 
             function selectAllSongs() {
-                const checkboxes = document.querySelectorAll(".song-select:not(.meme-song)");
+                const checkboxes = document.querySelectorAll(".song-select");
                 let all_checked = true;
                 for (let c = 0; c < checkboxes.length; c++) {
                     if (!checkboxes[c].checked) {

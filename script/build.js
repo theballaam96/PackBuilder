@@ -105,8 +105,12 @@ async function buildPack() {
         files.forEach(file => {
             let allow = true;
             const unsafe_allowed = document.getElementById("unsafe-song-toggle").checked;
+            const meme_allowed = document.getElementById("meme-song-toggle").checked;
             if (file.tags) {
                 if (file.tags.includes(unsafe_song_tag) && (!unsafe_allowed)) {
+                    allow = false;
+                }
+                if (file.tags.includes(meme_song_tag) && (!meme_allowed)) {
                     allow = false;
                 }
             }
