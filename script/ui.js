@@ -237,9 +237,9 @@ window.updateGameCount = updateGameCount;
 function selectAllForGame(name = null, state = true) {
     let song_checkboxes = [];
     if (name !== null) {
-        song_checkboxes = document.querySelectorAll(`.song-select[game='${name}']:not(.meme-song)`);
+        song_checkboxes = document.querySelectorAll(`.song-select[game='${name}']`);
     } else {
-        song_checkboxes = document.querySelectorAll(`.song-select:not(.meme-song)`);
+        song_checkboxes = document.querySelectorAll(`.song-select`);
     }
     for (let k = 0; k < song_checkboxes.length; k++) {
         song_checkboxes[k].checked = state;
